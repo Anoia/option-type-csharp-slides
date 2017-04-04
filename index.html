@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Option type in C#</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/ocean.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h2>An option type in C#</h2>
+					<br><br><br>
+					<p>
+						<small><a href="mailto:esther.machata@gmail.com">esther.machata@gmail.com</a>  -  <a href="http://twitter.com/stuckinadrawer">@stuckinadrawer</a></small>
+					</p>
+				</section>
+				<section>
+					<h3>what's an option type?</h3>
+						<p>generic type that can encapsulate an optional value</p>
+						<p>may or may not contain a value</p>
+
+				</section>
+				<section>
+
+
+				</section>
+				<section>
+						<h3>Option in F#</h3>
+						<pre><code class="fsharp" data-trim contenteditable>
+						type Option<'a> =
+						 | Some of 'a
+						 | None
+
+						 let validInt = Some 1
+						 let invalidInt = None
+
+						match validInt with
+					   | Some x -> printfn "the valid value is %A" x
+					   | None -> printfn "the value is None"
+						</code></pre>
+				</section>
+				<section>
+
+					<section>
+						<h3>What about null and nullable?</h3>
+					</section>
+
+					<section>
+						<h3>null and type safety</h3>
+					</section>
+
+					<section>
+						<p>So, what exactly is null again? Per MSDN:</p>
+					<blockquote cite="https://msdn.microsoft.com/en-us/library/edakx9da.aspx">
+						&ldquo;The null keyword is a literal that represents a null reference, one that does not refer to any object.&rdquo;
+					</blockquote>
+					</section>
+
+					<section>
+						<h3></h3>
+						<pre><code class="csharp" data-trim>
+							string s1 = "abc";
+							var len1 = s1.Length;
+
+							string s2 = null;
+							var len2 = s2.Length;
+						</code></pre>
+						<p>This will explode!</p>
+					</section>
+
+					<section  id="fragments">
+						<h3>null vs missing data</h3>
+						<p  class="fragment">completely different concepts!</p>
+						<p  class="fragment">null is often abused to represent missing/optional data</p>
+					</section>
+
+					<section id="fragments">
+						<h3>But we already have Nullable!</h3>
+						<p class="fragment">only works on value types</p>
+						<p class="fragment">no special behavior</p>
+					</section>
+
+					<section>
+						<h3>Null checking is so easy!</h3>
+						<p class="fragment">
+							<pre><code class="csharp" data-trim>
+								string s1 = null;
+								var length = s1 != null ? s1.length : 0;
+								var length = s1?.length ?? 0;
+							</code></pre>
+						</p>
+						<p class="fragment"> You're screwed if you forget to use it! </p>
+					</section>
+
+				</section>
+				<section>
+					<section>
+							Option to the rescue!
+
+							.. some more explanation
+					</section>
+					<section>
+							<h3>C# doesn't have an option type though?</h3>
+							<p>No, but smart people built one!</p>
+							<p><a href="https://github.com/nlkl/Optional">https://github.com/nlkl/Optional</a></p>
+					</section>
+					<section>
+						<h3>Optional</h3>
+						<ul>
+							<li>Provides <strong>Maybe</strong> and <strong>Either</strong></li>
+							<li>'Unsafe' access to value only with different namespace import</li>
+							<li>Option type treated like collection: map, filter</li>
+						</ul>
+					</section>
+				</section>
+
+
+
+				<section>
+					<section>
+							<h3>Conclusion</h3>
+					</section>
+					<section>
+
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
