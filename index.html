@@ -33,29 +33,31 @@
 					</p>
 				</section>
 				<section>
-					<h3>what's an option type?</h3>
-						<p>generic type that can encapsulate an optional value</p>
-						<p>may or may not contain a value</p>
-
+					<h3 >what's an option type?</h3>
+						<p class="fragment">generic type that can encapsulate an optional value</p>
+						<p class="fragment">may or may not contain a value</p>
+						<p class="fragment">useful as return value for function</p>
 				</section>
 				<section>
-
-
+					<h3 >why would I use that?</h3>
+					<p class="fragment">avoid NullReferenceExceptions</p>
+					<p class="fragment">signal intent and model your data more explictly</p>
+					<p class="fragment">focus on your domain by cutting down on manual null checks</p>
 				</section>
 				<section>
 						<h3>Option in F#</h3>
-						<pre><code class="fsharp" data-trim contenteditable>
-						type Option<'a> =
-						 | Some of 'a
-						 | None
+<pre><code class="fsharp" data-trim contenteditable>
+type Option<'a> =
+ | Some of 'a
+ | None
 
-						 let validInt = Some 1
-						 let invalidInt = None
+ let validInt = Some 1
+ let invalidInt = None
 
-						match validInt with
-					   | Some x -> printfn "the valid value is %A" x
-					   | None -> printfn "the value is None"
-						</code></pre>
+match validInt with
+ | Some x -> printfn "the valid value is %A" x
+ | None -> printfn "the value is None"
+</code></pre>
 				</section>
 				<section>
 
@@ -63,9 +65,6 @@
 						<h3>What about null and nullable?</h3>
 					</section>
 
-					<section>
-						<h3>null and type safety</h3>
-					</section>
 
 					<section>
 						<p>So, what exactly is null again? Per MSDN:</p>
@@ -74,25 +73,25 @@
 					</blockquote>
 					</section>
 
-					<section>
-						<h3></h3>
-						<pre><code class="csharp" data-trim>
-							string s1 = "abc";
-							var len1 = s1.Length;
+					<section >
+						<h3>null and type safety</h3>
+						<p ><pre ><code class="csharp" data-trim>
+string s1 = "abc";
+var len1 = s1.Length;
 
-							string s2 = null;
-							var len2 = s2.Length;
-						</code></pre>
-						<p>This will explode!</p>
+string s2 = null;
+var len2 = s2.Length;
+						</code></pre></p>
+						<p class="fragment">This will explode!</p>
 					</section>
 
-					<section  id="fragments">
+					<section>
 						<h3>null vs missing data</h3>
 						<p  class="fragment">completely different concepts!</p>
-						<p  class="fragment">null is often abused to represent missing/optional data</p>
+						<p  class="fragment">null is often (ab)used to represent missing/optional data</p>
 					</section>
 
-					<section id="fragments">
+					<section>
 						<h3>But we already have Nullable!</h3>
 						<p class="fragment">only works on value types</p>
 						<p class="fragment">no special behavior</p>
@@ -100,11 +99,11 @@
 
 					<section>
 						<h3>Null checking is so easy!</h3>
-						<p class="fragment">
+						<p>
 							<pre><code class="csharp" data-trim>
-								string s1 = null;
-								var length = s1 != null ? s1.length : 0;
-								var length = s1?.length ?? 0;
+string s1 = null;
+var length = s1 != null ? s1.length : 0;
+var length = s1?.length ?? 0;
 							</code></pre>
 						</p>
 						<p class="fragment"> You're screwed if you forget to use it! </p>
@@ -113,9 +112,10 @@
 				</section>
 				<section>
 					<section>
-							Option to the rescue!
+							<h3>Option to the rescue!</h3>
 
-							.. some more explanation
+							<p>Get the type system to help you</p>
+
 					</section>
 					<section>
 							<h3>C# doesn't have an option type though?</h3>
@@ -130,16 +130,30 @@
 							<li>Option type treated like collection: map, filter</li>
 						</ul>
 					</section>
+					<section>
+							<h3>Demo time!</h3>
+					</section>
 				</section>
 
-
+				<section>
+						<h3>Railway oriented programming</h3>
+						<a href="https://vimeo.com/113707214">Talk by Scott Wlaschin</a>
+				</section>
 
 				<section>
 					<section>
 							<h3>Conclusion</h3>
+							<p>It’s not that dealing with any given instance of null is particularly hard, it’s that it is so easy to miss one.</p>
 					</section>
 					<section>
-
+						<h3>Thank you!</h3>
+					</section>
+					<section>
+						<h3>Questions?</h3>
+						<br><br><br>
+						<p>
+							<small><a href="mailto:esther.machata@gmail.com">esther.machata@gmail.com</a>  -  <a href="http://twitter.com/stuckinadrawer">@stuckinadrawer</a></small>
+						</p>
 					</section>
 				</section>
 			</div>
